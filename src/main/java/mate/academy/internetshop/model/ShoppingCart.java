@@ -4,27 +4,27 @@ import java.util.List;
 
 public class ShoppingCart {
     private Long id;
+    private User user;
     private List<Product> products;
-    private Long orderId;
 
     public Long getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public List<Product> getProducts() {
         return products;
     }
 
-    public Long getOrderId() {
-        return orderId;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setProducts(List<Product> products) {

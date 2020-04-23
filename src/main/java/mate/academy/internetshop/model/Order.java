@@ -7,6 +7,20 @@ public class Order {
     private List<Product> products;
     private User user;
 
+    public Order(List<Product> products, User user) {
+        this.products = products;
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{"
+                + "id=" + id
+                + ", products=" + products
+                + ", user=" + user
+                + '}';
+    }
+
     public Long getId() {
         return id;
     }

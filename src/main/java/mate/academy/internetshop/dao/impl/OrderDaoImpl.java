@@ -1,6 +1,7 @@
 package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,11 +22,10 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Order get(Long id) {
+    public Optional<Order> get(Long id) {
         return Storage.orders.stream()
                 .filter(o -> o.getId().equals(id))
-                .findAny()
-                .orElseThrow();
+                .findAny();
     }
 
     @Override

@@ -1,33 +1,39 @@
 package mate.academy.internetshop.service.impl;
 
+import java.util.List;
 import mate.academy.internetshop.dao.ShoppingCartDao;
-import mate.academy.internetshop.dao.Storage;
 import mate.academy.internetshop.lib.Inject;
+import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-import java.util.List;
-import java.util.stream.IntStream;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Inject
     private ShoppingCartDao shoppingCartDao;
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
-        if (shoppingCart.getId() == null) {
+        if (shoppingCartDao.get(shoppingCart.getId()).isEmpty()) {
             ShoppingCart createdCart = shoppingCartDao.create(shoppingCart);
             createdCart.getProducts().add(product);
         } else {
             shoppingCart.getProducts().add(product);
+            shoppingCartDao.update(shoppingCart);
         }
         return shoppingCart;
     }
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        return shoppingCart.getProducts().removeIf(p -> p.getId().equals(product.getId()));
+        if (shoppingCart.getProducts().remove(product)) {
+            shoppingCartDao.update(shoppingCart);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

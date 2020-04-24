@@ -5,13 +5,14 @@ import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderService {
     Order completeOrder(List<Product> products, User user);
 
     List<Order> getUserOrders(User user);
 
-    Order get(Long id);
+    Optional<Order> get(Long id);
 
     List<Order> getAll();
 

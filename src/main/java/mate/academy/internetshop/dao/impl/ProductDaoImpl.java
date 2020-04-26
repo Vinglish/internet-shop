@@ -1,6 +1,7 @@
 package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.dao.Storage;
@@ -17,11 +18,10 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product get(Long id) {
+    public Optional<Product> get(Long id) {
         return Storage.products.stream()
                 .filter(p -> p.getId().equals(id))
-                .findAny()
-                .orElseThrow();
+                .findAny();
     }
 
     @Override

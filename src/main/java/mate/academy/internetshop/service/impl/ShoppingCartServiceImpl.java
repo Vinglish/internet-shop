@@ -7,11 +7,15 @@ import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ShoppingCartService;
+import mate.academy.internetshop.service.UserService;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Inject
     private ShoppingCartDao shoppingCartDao;
+
+    @Inject
+    private UserService userService;
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
@@ -45,7 +49,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartDao.getAll().stream()
                 .filter(element -> element.getUser().getId().equals(userId))
                 .findFirst()
-                .orElseThrow();
+                .orElse(shoppingCartDao.create(new ShoppingCart(userService.get(userId).get())));
     }
 
     @Override

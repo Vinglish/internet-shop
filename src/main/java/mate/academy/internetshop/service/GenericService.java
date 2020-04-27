@@ -12,7 +12,5 @@ public interface GenericService<T, L> {
 
     List<T> getAll();
 
-
-
     boolean delete(L id);
 }

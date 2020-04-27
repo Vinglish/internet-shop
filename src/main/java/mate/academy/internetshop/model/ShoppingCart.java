@@ -8,6 +8,10 @@ public class ShoppingCart {
     private User user;
     private List<Product> products = new ArrayList<>();
 
+    public ShoppingCart() {
+
+    }
+
     public ShoppingCart(User user) {
         this.user = user;
     }

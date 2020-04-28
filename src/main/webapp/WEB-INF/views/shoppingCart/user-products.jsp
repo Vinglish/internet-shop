@@ -15,7 +15,6 @@
             <tr>
                 <td>
                     <c:out value ="${product.id}"/>
-                    c:
                 </td>
                 <td>
                     <c:out value ="${product.name}"/>

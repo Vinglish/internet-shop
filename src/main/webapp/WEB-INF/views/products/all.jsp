@@ -21,7 +21,7 @@
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}
-                /toShoppingCart?id=${product.id}">toShoppingCart</a>
+                /add-product-to-shopping-cart-controller?id=${product.id}">toShoppingCart</a>
             </td>
         </tr>
     </c:forEach>

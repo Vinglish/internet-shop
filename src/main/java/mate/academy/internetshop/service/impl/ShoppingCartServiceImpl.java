@@ -49,7 +49,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartDao.getAll().stream()
                 .filter(element -> element.getUser().getId().equals(userId))
                 .findFirst()
-                .orElse(shoppingCartDao.create(new ShoppingCart(userService.get(userId).get())));
+                .orElse(shoppingCartDao.create(new ShoppingCart(userService.get(userId))));
     }
 
     @Override

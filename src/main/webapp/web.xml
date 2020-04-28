@@ -16,12 +16,12 @@
 
     <servlet>
         <servlet-name>allUsers</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.UsersController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllUsersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>allUsers</servlet-name>
-        <url-pattern>/users/all</url-pattern>
+        <url-pattern>/users/get-all-users-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -31,7 +31,7 @@
 
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
-        <url-pattern>/registration</url-pattern>
+        <url-pattern>/registration-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -41,17 +41,17 @@
 
     <servlet-mapping>
         <servlet-name>deleteUser</servlet-name>
-        <url-pattern>/users/delete</url-pattern>
+        <url-pattern>/users/delete-user-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>allProducts</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.ProductsController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>allProducts</servlet-name>
-        <url-pattern>/products/all</url-pattern>
+        <url-pattern>/products/get-all-products-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -61,7 +61,7 @@
 
     <servlet-mapping>
         <servlet-name>addProduct</servlet-name>
-        <url-pattern>/products/add</url-pattern>
+        <url-pattern>/products/add-product-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -71,16 +71,16 @@
 
     <servlet-mapping>
         <servlet-name>addProductToShoppingCart</servlet-name>
-        <url-pattern>/toShoppingCart</url-pattern>
+        <url-pattern>/add-product-to-shopping-cart-controller</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>shoppingCart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.ShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.DisplayShoppingCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>shoppingCart</servlet-name>
-        <url-pattern>/shoppingCart/user-products</url-pattern>
+        <url-pattern>/display-shopping-cart-controller</url-pattern>
     </servlet-mapping>
 </web-app>

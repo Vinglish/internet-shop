@@ -10,6 +10,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Delete</th>
         </tr>
         <c:forEach var ="product" items = "${productsInCart}">
             <tr>
@@ -22,8 +23,15 @@
                 <td>
                     <c:out value ="${product.price}"/>
                 </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}
+                    /products/delete-product-from-shopping-cart
+                    ?user-id=1&product-id=${product.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
+    <a href="${pageContext.request.contextPath}
+                    /orders/create-order?user-id=1">Create order</a>
 </body>
 </html>

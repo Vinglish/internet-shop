@@ -9,6 +9,8 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Price</th>
+        <th>Delete</th>
     </tr>
     <c:forEach var ="product" items = "${products}">
         <tr>
@@ -19,11 +21,15 @@
                 <c:out value ="${product.name}"/>
             </td>
             <td>
+                <c:out value="${product.price}"/>
+            </td>
+            <td>
                 <a href="${pageContext.request.contextPath}
-                /add-product-to-shopping-cart?id=${product.id}">toShoppingCart</a>
+                /products/delete-product?product-id=${product.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
+<a href="${pageContext.request.contextPath}/products/add-product">Create product</a>
 </body>
 </html>

@@ -29,7 +29,7 @@ public class RegistrationController extends HttpServlet {
         if (pwd.equals(repeatPwd)) {
             var user = new User(name, pwd);
             userService.create(user);
-            resp.sendRedirect(req.getContextPath() + "/");
+            resp.sendRedirect(req.getContextPath() + "/products/add-product");
         } else {
             req.setAttribute("message", "Passwords don't match, try again");
             req.getRequestDispatcher("/WEB-INF/views/registration.jsp").forward(req, resp);

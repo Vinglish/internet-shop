@@ -25,9 +25,9 @@ public class CreateOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String userId = req.getParameter("user-id");
-        ShoppingCart shoppingCart = shoppingCartService.getByUserId(Long.valueOf(userId));
-        User user = userService.get(Long.valueOf(userId));
+        Long userId = (Long) req.getSession().getAttribute("user-id");
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
+        User user = userService.get(userId);
         orderService.completeOrder(shoppingCart.getProducts(), user);
         resp.sendRedirect(req.getContextPath() + "/orders/get-all-orders");
     }

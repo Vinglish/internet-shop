@@ -83,4 +83,12 @@
         <servlet-name>shoppingCart</servlet-name>
         <url-pattern>/display-shopping-cart</url-pattern>
     </servlet-mapping>
+    <filter-mapping>
+        <filter-name>authentication</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authorization</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

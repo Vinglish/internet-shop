@@ -4,7 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Hello world!</h1>
-<a href="${pageContext.request.contextPath}/logout">Logout</a>
+<h1>Sorry, access to this page is denied!</h1>
 </body>
 </html>

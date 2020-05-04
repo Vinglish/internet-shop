@@ -22,12 +22,12 @@ public class RegistrationController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String name = req.getParameter("name");
+        String login = req.getParameter("login");
         String pwd = req.getParameter("pwd");
         String repeatPwd = req.getParameter("repeatPwd");
 
         if (pwd.equals(repeatPwd)) {
-            var user = new User(name, pwd);
+            var user = new User(login, pwd);
             userService.create(user);
             resp.sendRedirect(req.getContextPath() + "/products/add-product");
         } else {

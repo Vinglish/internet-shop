@@ -71,7 +71,7 @@
 
     <servlet-mapping>
         <servlet-name>addProductToShoppingCart</servlet-name>
-        <url-pattern>/add-product-to-shopping-cart</url-pattern>
+        <url-pattern>/shopping-cart/add-product-to-shopping-cart</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -81,7 +81,7 @@
 
     <servlet-mapping>
         <servlet-name>shoppingCart</servlet-name>
-        <url-pattern>/display-shopping-cart</url-pattern>
+        <url-pattern>/shopping-cart/display-shopping-cart</url-pattern>
     </servlet-mapping>
     <filter-mapping>
         <filter-name>authentication</filter-name>

@@ -12,7 +12,7 @@ import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-@WebServlet("/products/delete-product-from-shopping-cart")
+@WebServlet("/shopping-cart/delete-product-from-shopping-cart")
 public class DeleteProductFromShoppingCartController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService = (ProductService) INJECTOR

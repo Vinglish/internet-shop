@@ -1,7 +1,7 @@
 package mate.academy.internetshop.controllers;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ public class RegistrationController extends HttpServlet {
 
         if (pwd.equals(repeatPwd)) {
             var user = new User(login, pwd);
-            user.setRoles(List.of(Role.of("USER")));
+            user.setRoles(Set.of(Role.of("USER")));
             userService.create(user);
             resp.sendRedirect(req.getContextPath() + "/products/add-product");
         } else {

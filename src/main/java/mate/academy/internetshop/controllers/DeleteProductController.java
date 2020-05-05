@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.service.ProductService;
 
-@WebServlet("/products/delete-product")
+@WebServlet("/products/delete")
 public class DeleteProductController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService = (ProductService) INJECTOR
@@ -20,6 +20,6 @@ public class DeleteProductController extends HttpServlet {
             throws ServletException, IOException {
         String productId = req.getParameter("product-id");
         productService.delete(Long.valueOf(productId));
-        resp.sendRedirect(req.getContextPath() + "/products/change-products");
+        resp.sendRedirect(req.getContextPath() + "/products/change");
     }
 }

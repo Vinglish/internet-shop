@@ -23,15 +23,16 @@ public class AuthorizationFilter implements Filter {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private static final String USER_ID = "user-id";
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
-    private Map<String, List<Role.RoleName>> protectedUrls = new HashMap<>();
+    private final Map<String, List<Role.RoleName>> protectedUrls = new HashMap<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        protectedUrls.put("/users/*", List.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/products/*", List.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/products/get-all-products", List.of(Role.RoleName.USER));
-        protectedUrls.put("/orders/*", List.of(Role.RoleName.USER));
-        protectedUrls.put("/shopping-cart/*", List.of(Role.RoleName.USER));
+        protectedUrls.put("/users/get-all", List.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/add", List.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/change", List.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/shopping-cart/display", List.of(Role.RoleName.USER));
+        protectedUrls.put("/orders/get-all", List.of(Role.RoleName.USER));
+        protectedUrls.put("/orders/get-order", List.of(Role.RoleName.USER));
     }
 
     @Override

@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
+import org.apache.log4j.Logger;
 
 public class AddProductController extends HttpServlet {
+    private static final Logger logger = Logger.getLogger(AddProductController.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService
             = (ProductService) INJECTOR.getInstance(ProductService.class);
@@ -25,8 +27,8 @@ public class AddProductController extends HttpServlet {
             throws ServletException, IOException {
         String name = req.getParameter("name");
         String price = req.getParameter("price");
-
         productService.create(new Product(name, Double.parseDouble(price)));
+        logger.info("Product " + name + " was added");
         resp.sendRedirect(req.getContextPath() + "/products/add");
     }
 }

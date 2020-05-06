@@ -11,7 +11,7 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 
-@WebServlet("/products/change-products")
+@WebServlet("/products/change")
 public class ChangeProductsController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService

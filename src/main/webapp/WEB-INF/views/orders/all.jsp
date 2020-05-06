@@ -22,7 +22,7 @@
                 </a>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/orders/delete-order?order-id=${order.id}">
+                <a href="${pageContext.request.contextPath}/orders/delete?order-id=${order.id}">
                     Delete
                 </a>
             </td>

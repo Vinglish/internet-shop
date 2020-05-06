@@ -21,7 +21,7 @@
 
     <servlet-mapping>
         <servlet-name>getAllUsers</servlet-name>
-        <url-pattern>/users/get-all-users</url-pattern>
+        <url-pattern>/users/get-all</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -41,7 +41,7 @@
 
     <servlet-mapping>
         <servlet-name>deleteUser</servlet-name>
-        <url-pattern>/users/delete-user</url-pattern>
+        <url-pattern>/users/delete</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -51,7 +51,7 @@
 
     <servlet-mapping>
         <servlet-name>getAllProducts</servlet-name>
-        <url-pattern>/products/get-all-products</url-pattern>
+        <url-pattern>/products/get-all</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -61,7 +61,7 @@
 
     <servlet-mapping>
         <servlet-name>addProduct</servlet-name>
-        <url-pattern>/products/add-product</url-pattern>
+        <url-pattern>/products/add</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -71,7 +71,7 @@
 
     <servlet-mapping>
         <servlet-name>addProductToShoppingCart</servlet-name>
-        <url-pattern>/add-product-to-shopping-cart</url-pattern>
+        <url-pattern>/shopping-cart/add-product</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -81,6 +81,14 @@
 
     <servlet-mapping>
         <servlet-name>shoppingCart</servlet-name>
-        <url-pattern>/display-shopping-cart</url-pattern>
+        <url-pattern>/shopping-cart/display</url-pattern>
     </servlet-mapping>
+    <filter-mapping>
+        <filter-name>authentication</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authorization</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

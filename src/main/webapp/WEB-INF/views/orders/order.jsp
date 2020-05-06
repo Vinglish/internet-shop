@@ -20,6 +20,6 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/orders/get-all-orders">Back to order list</a>
+    <a href="${pageContext.request.contextPath}/orders/get-all">Back to order list</a>
 </body>
 </html>

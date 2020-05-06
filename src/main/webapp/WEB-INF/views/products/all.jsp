@@ -20,7 +20,7 @@
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}
-                /add-product-to-shopping-cart?id=${product.id}">toShoppingCart</a>
+                shopping-cart/add-product?id=${product.id}">toShoppingCart</a>
             </td>
         </tr>
     </c:forEach>

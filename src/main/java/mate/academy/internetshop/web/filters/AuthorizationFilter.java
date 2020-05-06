@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 
 @WebFilter(filterName = "authorization")
 public class AuthorizationFilter implements Filter {
-    private static final Logger logger = Logger.getLogger(AuthorizationFilter.class);
+    private static final Logger LOGGER = Logger.getLogger(AuthorizationFilter.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private static final String USER_ID = "user-id";
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
@@ -56,7 +56,7 @@ public class AuthorizationFilter implements Filter {
         if (isAuthorizes(user, protectedUrls.get(url))) {
             filterChain.doFilter(req, resp);
         } else {
-            logger.warn("User with id: " + user.getId() + " tried to use url" + url);
+            LOGGER.warn("User with id: " + user.getId() + " tried to use url" + url);
             req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
         }
     }

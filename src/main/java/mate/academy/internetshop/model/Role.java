@@ -6,6 +6,11 @@ public class Role {
 
     private Role(RoleName roleName) {
         this.roleName = roleName;
+        if (roleName == RoleName.ADMIN) {
+            id = 1L;
+        } else {
+            id = 2L;
+        }
     }
 
     public static Role of(String roleName) {

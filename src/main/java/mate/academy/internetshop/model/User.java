@@ -9,13 +9,20 @@ public class User {
     private String password;
     private Set<Role> roles;
 
+    public User(Long id, String login, String password, Set<Role> roles) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User(String name, String login, String password) {
-        this.name = name;
+    public User(Long id, String login, String password) {
+        this.id = id;
         this.login = login;
         this.password = password;
     }

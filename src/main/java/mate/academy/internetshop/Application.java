@@ -9,6 +9,8 @@ import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
+import java.math.BigDecimal;
+
 public class Application {
     private static Injector injector = Injector.getInstance("mate.academy.internetshop");
 
@@ -25,8 +27,8 @@ public class Application {
         ShoppingCartService shoppingCartService
                 = (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
         ShoppingCart shoppingCart = new ShoppingCart(user);
-        Product table = new Product("table", 23.4);
-        Product chair = new Product("chair", 15);
+        Product table = new Product("table", new BigDecimal(12));
+        Product chair = new Product("chair", new BigDecimal(14));
         shoppingCartService.addProduct(shoppingCart, table);
         shoppingCartService.addProduct(shoppingCart, chair);
         System.out.println("--------------------------------------------");

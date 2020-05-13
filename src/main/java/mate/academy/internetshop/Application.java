@@ -1,5 +1,6 @@
 package mate.academy.internetshop;
 
+import java.math.BigDecimal;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
@@ -8,8 +9,6 @@ import mate.academy.internetshop.service.OrderService;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
-
-import java.math.BigDecimal;
 
 public class Application {
     private static Injector injector = Injector.getInstance("mate.academy.internetshop");

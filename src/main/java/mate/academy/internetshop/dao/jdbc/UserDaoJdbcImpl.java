@@ -1,8 +1,15 @@
 package mate.academy.internetshop.dao.jdbc;
 
-import java.sql.*;
-import java.util.*;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import mate.academy.internetshop.dao.UserDao;
 import mate.academy.internetshop.exceptions.DataProcessingException;
 import mate.academy.internetshop.lib.Dao;
@@ -76,7 +83,7 @@ public class UserDaoJdbcImpl implements UserDao {
             }
             return usersList;
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't take users list" , e);
+            throw new DataProcessingException("Can't take users list", e);
         }
     }
 
@@ -122,7 +129,7 @@ public class UserDaoJdbcImpl implements UserDao {
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Problem with add roles" ,e);
+            throw new DataProcessingException("Problem with add roles", e);
         }
     }
 
@@ -144,7 +151,7 @@ public class UserDaoJdbcImpl implements UserDao {
                 getRoles(resultSet.getLong("user_id")));
     }
 
-    private Set<Role> getRoles (Long userId) {
+    private Set<Role> getRoles(Long userId) {
 
         String query = "SELECT roles.role_name FROM users_roles INNER JOIN roles "
                 + "ON  users_roles.role_id=roles.role_id "

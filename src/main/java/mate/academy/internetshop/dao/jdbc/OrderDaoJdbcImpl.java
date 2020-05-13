@@ -124,10 +124,10 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     private List<Product> getProductsFromOrder(Long orderId) {
         String query = "SELECT products.product_id, products.name, products.price "
-                +"FROM products "
-                +"INNER JOIN orders_products "
-                +"ON products.product_id = orders_products.product_id "
-                +"WHERE orders_products.order_id=?;";
+                + "FROM products "
+                + "INNER JOIN orders_products "
+                + "ON products.product_id = orders_products.product_id "
+                + "WHERE orders_products.order_id=?;";
         List<Product> productList = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);

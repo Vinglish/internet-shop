@@ -1,5 +1,6 @@
 package mate.academy.internetshop;
 
+import java.math.BigDecimal;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
@@ -9,8 +10,6 @@ import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
-import java.math.BigDecimal;
-
 public class Application {
     private static Injector injector = Injector.getInstance("mate.academy.internetshop");
 
@@ -18,7 +17,7 @@ public class Application {
         ProductService productService = (ProductService) injector.getInstance(ProductService.class);
 
         UserService userService = (UserService) injector.getInstance(UserService.class);
-        User user = userService.create(new User("Nick", "login", "password"));
+        User user = userService.create(new User(12L, "login", "password"));
         System.out.println(user.toString());
         user.setPassword("new password");
         userService.update(user);
@@ -26,7 +25,7 @@ public class Application {
 
         ShoppingCartService shoppingCartService
                 = (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
-        ShoppingCart shoppingCart = new ShoppingCart(user);
+        ShoppingCart shoppingCart = new ShoppingCart(12L);
         Product table = new Product("table", new BigDecimal(12));
         Product chair = new Product("chair", new BigDecimal(14));
         shoppingCartService.addProduct(shoppingCart, table);
@@ -36,7 +35,7 @@ public class Application {
                 .forEach(p -> System.out.println(p.toString()));
 
         OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
-        orderService.completeOrder(shoppingCartService.getAllProducts(shoppingCart), user);
+        orderService.completeOrder(shoppingCartService.getAllProducts(shoppingCart), 12L);
         orderService.getUserOrders(user).forEach(order -> System.out.println(order.toString()));
     }
 }

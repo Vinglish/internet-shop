@@ -5,7 +5,7 @@
     <title>Order</title>
 </head>
 <body>
-<h2>Name: ${order.user.name}</h2>
+<h2>Name: ${order.userId}</h2>
     <table border="1">
         <tr>
             <th>ID</th>

@@ -4,13 +4,17 @@ public class Role {
     private Long id;
     private RoleName roleName;
 
-    private Role(RoleName roleName) {
+    public Role(RoleName roleName) {
         this.roleName = roleName;
-        if (roleName == RoleName.ADMIN) {
-            id = 1L;
-        } else {
-            id = 2L;
-        }
+    }
+
+    private Role(Long id, RoleName roleName) {
+        this.id = id;
+        this.roleName = roleName;
+    }
+
+    public static Role of(Long id, String roleName) {
+        return new Role(id, RoleName.valueOf(roleName));
     }
 
     public static Role of(String roleName) {

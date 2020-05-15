@@ -19,7 +19,7 @@ import mate.academy.internetshop.util.ConnectionUtil;
 public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
-        String query = "INSERT INTO internet_shop.shopping_carts (user_id) VALUES (?)";
+        String query = "INSERT INTO shopping_carts (user_id) VALUES (?)";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement
                     = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -37,7 +37,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public Optional<ShoppingCart> get(Long id) {
-        String query = "SELECT * FROM internet_shop.shopping_carts WHERE cart_id=?";
+        String query = "SELECT * FROM shopping_carts WHERE cart_id=?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -53,7 +53,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
 
     @Override
     public List<ShoppingCart> getAll() {
-        String query = "SELECT * FROM internet_shop.shopping_carts;";
+        String query = "SELECT * FROM shopping_carts;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
@@ -65,7 +65,6 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Cart does not exist", e);
         }
-
     }
 
     @Override

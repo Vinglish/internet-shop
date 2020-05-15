@@ -121,12 +121,17 @@ public class UserDaoJdbcImpl implements UserDao {
 
     private void addRolesForUser(User user) {
         String query = "INSERT INTO users_roles VALUES (?,?);";
+        Set<Role> roleSet = getAllRoles();
         try (Connection connection = ConnectionUtil.getConnection()) {
-            for (Role role : user.getRoles()) {
-                PreparedStatement statement = connection.prepareStatement(query);
-                statement.setLong(1, user.getId());
-                statement.setLong(2, role.getId());
-                statement.executeUpdate();
+            PreparedStatement statement = connection.prepareStatement(query);
+            for (Role role : roleSet) {
+                for (Role userRole : user.getRoles()) {
+                    if (role.getRoleName().equals(userRole.getRoleName())) {
+                        statement.setLong(1, user.getId());
+                        statement.setLong(2, role.getId());
+                        statement.executeUpdate();
+                    }
+                }
             }
         } catch (SQLException e) {
             throw new DataProcessingException("Problem with add roles", e);
@@ -148,13 +153,12 @@ public class UserDaoJdbcImpl implements UserDao {
         return new User(resultSet.getLong("user_id"),
                 resultSet.getString("login"),
                 resultSet.getString("password"),
-                getRoles(resultSet.getLong("user_id")));
+                getUserRoles(resultSet.getLong("user_id")));
     }
 
-    private Set<Role> getRoles(Long userId) {
-
-        String query = "SELECT r.role_name FROM users_roles ur INNER JOIN roles r"
-                + "ON  users_roles.role_id=roles.role_id "
+    private Set<Role> getUserRoles(Long userId) {
+        String query = "SELECT r.role_id, r.role_name FROM roles r INNER JOIN users_roles ur "
+                + "ON  ur.role_id=r.role_id "
                 + "WHERE ur.user_id = ?;";
         Set<Role> roleSet = new HashSet<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
@@ -162,11 +166,29 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                roleSet.add(Role.of(resultSet.getString("role_name")));
+                roleSet.add(Role.of(resultSet.getLong("role_id"),
+                        resultSet.getString("role_name")));
             }
         } catch (SQLException e) {
             throw new DataProcessingException("Can't get roles of user", e);
         }
         return roleSet;
     }
+
+    private Set<Role> getAllRoles() {
+        String query = "SELECT * FROM roles;";
+        Set<Role> roleSet = new HashSet<>();
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                var role = Role.of(resultSet.getLong("role_id"),
+                        resultSet.getString("role_name"));
+            }
+            return roleSet;
+        } catch (SQLException e) {
+            throw new DataProcessingException("Can't get all roles", e);
+        }
+    }
+
 }

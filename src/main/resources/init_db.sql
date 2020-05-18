@@ -10,6 +10,7 @@ CREATE TABLE `internet_shop`.`users` (
   `login` VARCHAR(256) NOT NULL,
   `name` VARCHAR(256) NULL,
   `password` VARCHAR(256) NOT NULL,
+  `salt` VARBINARY(500) NOT NULL,
   PRIMARY KEY (`user_id`));
 
 CREATE TABLE `internet_shop`.`shopping_carts` (

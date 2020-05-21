@@ -15,7 +15,7 @@ public class User {
         this.password = password;
     }
 
-    public User(Long id, String login, String password, byte[] salt,  Set<Role> roles) {
+    public User(Long id, String login, String password, byte[] salt, Set<Role> roles) {
         this.id = id;
         this.login = login;
         this.password = password;

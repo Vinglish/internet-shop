@@ -1,5 +1,4 @@
 # Internet-shop
-![Internet-shop](/images/shop.jpg)
 
 # Table of Contents
 * [Project purpose](#purpose)
@@ -67,4 +66,6 @@ Run the project.
 <hr>
 
 # <a name="authors"></a>Authors
+
 * [Vinglish](https://github.com/Vinglish)
+

@@ -7,18 +7,26 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private byte[] salt;
     private Set<Role> roles;
-
-    public User(Long id, String login, String password, Set<Role> roles) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.roles = roles;
-    }
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User(Long id, String login, String password, byte[] salt, Set<Role> roles) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.salt = salt;
+        this.roles = roles;
+    }
+
+    public User(String login, String password, byte[] salt) {
+        this.login = login;
+        this.password = password;
+        this.salt = salt;
     }
 
     public User(Long id, String login, String password) {
@@ -53,6 +61,10 @@ public class User {
         return password;
     }
 
+    public byte[] getSalt() {
+        return salt;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -67,6 +79,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 
     public Set<Role> getRoles() {

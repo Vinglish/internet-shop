@@ -1,0 +1,17 @@
+language: java
+jdk:
+  - openjdk11
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Vinglish_internet-shop
+cache:
+  directories:
+    - $HOME/.m2
+addons:
+  sonarcloud:
+    organization: "vinglish"
+    token:
+      secure: "ZrlWD9LMzQAiDGo5OOHl0c4VGvpHgoc4b6nzymU5b85OK4D8cdYuDkfKuhcXZiXo7mg0v5WATzlxzqoLveuw+u8TV/Zm6nvjQMIDEgusWK1YbKrwEMRHzdIiiRdPXQbi4ElNqKF8VizcIL
+              hQOtB1I1Bm+GrqbO/Pk3QWA4sGaFIh1HLfmMYNXqUJVw3l3dk97yF7EUfSYhJhqxebT2GvEq+UXbojZSubGhNSlfoQ569hVd/Y9WdH/AYPm//mU3aAW8R17UxhEaVIE0yqeyFiFmbPjtJlGs85Pe4CP7h
+              VwXMFTYTMcCAU6AxWt/VxbSkVoriNefA9eOqNc3jkkjM26b29/mCwBcYG0CTN/0csiyhjFNyH1ldxvQ5/mWOv0kobleHMp6j7KowRkjVmtkNOHtNv9p718CceHUg4tMNR+1Ld+Sm94pCSlETgxV+6bpY2
+              e/GfnsH5ILl4lvrrSODeuX2VV3HamNWwl254jh8T6bzrPqQWmkwLEhtihjjI08/XyFgnDNWcGKsYEsL/V/l3D5GXg7KSKUJw1Ejsbgj06G6IhutdyDbVgluOr/pbaCwUdw4qkh8uMXlZnZzaZA8z+YQPg
+              TjNHj/rHGf/P1lll58u3sk8N/xr+5EUrkurxzpcnNE301p2EcyWNq7n+JtJuRjSlkq7YAWNoYS9gKtGKaU=" # encrypted value of your token

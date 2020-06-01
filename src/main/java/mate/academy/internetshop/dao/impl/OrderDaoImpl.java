@@ -2,10 +2,12 @@ package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import mate.academy.internetshop.dao.OrderDao;
 import mate.academy.internetshop.dao.Storage;
 import mate.academy.internetshop.model.Order;
+import mate.academy.internetshop.model.User;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -38,5 +40,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public boolean delete(Long id) {
         return Storage.orders.removeIf(o -> o.getId().equals(id));
+    }
+
+    @Override
+    public List<Order> getUserOrders(User user) {
+        return Storage.orders.stream()
+                .filter(o -> o.getUserId().equals(user.getId()))
+                .collect(Collectors.toList());
     }
 }

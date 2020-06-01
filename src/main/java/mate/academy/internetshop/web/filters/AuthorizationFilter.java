@@ -17,11 +17,12 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @WebFilter(filterName = "authorization")
 public class AuthorizationFilter implements Filter {
-    private static final Logger LOGGER = Logger.getLogger(AuthorizationFilter.class);
+    private static final Logger LOGGER = LogManager.getLogger(AuthorizationFilter.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private static final String USER_ID = "user-id";
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);

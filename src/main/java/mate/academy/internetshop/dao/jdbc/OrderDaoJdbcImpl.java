@@ -13,6 +13,7 @@ import mate.academy.internetshop.exceptions.DataProcessingException;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.util.ConnectionUtil;
 
 @Dao
@@ -142,6 +143,23 @@ public class OrderDaoJdbcImpl implements OrderDao {
             return productList;
         } catch (SQLException e) {
             throw new DataProcessingException("Get products from order are failed", e);
+        }
+    }
+
+    @Override
+    public List<Order> getUserOrders(User user) {
+        String query = "SELECT * FROM orders WHERE order_id=?";
+        List<Order> orderList = new ArrayList<>();
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, user.getId());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                orderList.add(getOrderFromResultSet(resultSet));
+            }
+            return orderList;
+        } catch (SQLException e) {
+            throw new DataProcessingException("Get user order are failed", e);
         }
     }
 }

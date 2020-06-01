@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
-import org.apache.log4j.Logger;
+import mate.academy.internetshop.util.HashUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @WebServlet("/products/add")
 public class AddProductController extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(AddProductController.class);
+    private static final Logger LOGGER = LogManager.getLogger(HashUtil.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private final ProductService productService
             = (ProductService) INJECTOR.getInstance(ProductService.class);

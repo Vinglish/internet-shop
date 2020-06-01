@@ -1,5 +1,4 @@
 # Internet-shop
-![Internet-shop](/images/shop.jpg)
 
 # Table of Contents
 * [Project purpose](#purpose)

@@ -18,13 +18,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
-        if (shoppingCartDao.get(shoppingCart.getId()).isEmpty()) {
-            shoppingCartDao.create(shoppingCart).getProducts().add(product);
-        } else {
-            shoppingCart.getProducts().add(product);
-            shoppingCartDao.update(shoppingCart);
-        }
-        return shoppingCart;
+        shoppingCart.getProducts().add(product);
+        return shoppingCartDao.update(shoppingCart);
     }
 
     @Override

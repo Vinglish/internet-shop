@@ -9,8 +9,8 @@ public class Role {
     }
 
     private Role(Long id, RoleName roleName) {
+        this(roleName);
         this.id = id;
-        this.roleName = roleName;
     }
 
     public static Role of(Long id, String roleName) {

@@ -186,6 +186,7 @@ public class UserDaoJdbcImpl implements UserDao {
             while (resultSet.next()) {
                 var role = Role.of(resultSet.getLong("role_id"),
                         resultSet.getString("role_name"));
+                roleSet.add(role);
             }
             return roleSet;
         } catch (SQLException e) {

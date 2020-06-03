@@ -16,23 +16,20 @@ public class User {
     }
 
     public User(Long id, String login, String password, byte[] salt, Set<Role> roles) {
+        this(login, password);
         this.id = id;
-        this.login = login;
-        this.password = password;
         this.salt = salt;
         this.roles = roles;
     }
 
     public User(String login, String password, byte[] salt) {
-        this.login = login;
-        this.password = password;
+        this(login, password);
         this.salt = salt;
     }
 
     public User(Long id, String login, String password) {
+        this(login, password);
         this.id = id;
-        this.login = login;
-        this.password = password;
     }
 
     @Override

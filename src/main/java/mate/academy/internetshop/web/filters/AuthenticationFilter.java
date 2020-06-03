@@ -11,13 +11,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.service.UserService;
 
 @WebFilter(filterName = "authentication")
 public class AuthenticationFilter implements Filter {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private static final String USER_ID = "user-id";
-    private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

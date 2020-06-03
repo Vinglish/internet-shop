@@ -16,8 +16,8 @@ public class ShoppingCart {
     }
 
     public ShoppingCart(Long id, Long userId, List<Product> products) {
+        this(userId);
         this.id = id;
-        this.userId = userId;
         this.products = products;
     }
 

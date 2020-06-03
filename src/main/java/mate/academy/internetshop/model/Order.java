@@ -13,9 +13,8 @@ public class Order {
     }
 
     public Order(Long id, List<Product> products, Long userId) {
+        this(products, userId);
         this.id = id;
-        this.products = products;
-        this.userId = userId;
     }
 
     @Override
